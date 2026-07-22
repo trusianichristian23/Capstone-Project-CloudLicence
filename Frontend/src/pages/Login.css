@@ -1,0 +1,85 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top right, #1e40af, #0f172a);
+  padding: 20px; /* Aggiunto padding di sicurezza per mobile */
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-card input {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.login-card button[type="submit"] {
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.login-card button[type="submit"]:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.login-card h2 {
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Responsive extra per schermate molto strette */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px;
+  }
+}

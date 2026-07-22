@@ -1,0 +1,93 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #0f172a;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu { list-style: none; padding: 0; }
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+  color: #94a3b8;
+  text-decoration: none;
+}
+.menu li.active a, .menu li a:hover { background: #1e293b; color: white; }
+
+.sidebar-footer { border-top: 1px solid #1e293b; padding-top: 20px; }
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.logout-btn:hover { text-decoration: underline; text-decoration-color: #ef4444; text-underline-offset: 4px; }
+.logo-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 40px; padding-top: 10px; }
+.logo-text { color: #ffffff; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; text-transform: capitalize; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); } 
+
+/* --- RESPONSIVE SIDEBAR & HAMBURGER (FINO A 1024px) --- */
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #0f172a;
+  color: white;
+  z-index: 999;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.menu-toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@media (max-width: 1024px) {
+  .mobile-header { display: flex; }
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay.open {
+    display: block;
+  }
+}
