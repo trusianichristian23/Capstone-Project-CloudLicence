@@ -62,7 +62,7 @@ function Analysis() {
             <PieChart>
               <Pie data={data.departmentCosts} dataKey="totalCost" nameKey="_id" outerRadius={100} label={{ fontWeight: 'bold' }}>
                 {data.departmentCosts.map((entry, index) => (
-                  <Cell key={index} fill={entry._id === 'Marketing' ? '#38bdf8' : COLORS[index % COLORS.length]} />
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }} />
