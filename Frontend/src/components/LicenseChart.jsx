@@ -37,7 +37,7 @@ function LicenseChart({ data }) {
             {chartData.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={entry.name === 'Marketing' ? '#38bdf8' : COLORS[index % COLORS.length]} 
+                fill={COLORS[index % COLORS.length]} 
               />
             ))}
           </Bar>
