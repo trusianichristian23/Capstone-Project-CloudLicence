@@ -3,9 +3,6 @@ import api from '../api/axiosConfig';
 
 function Settings() {
   const [days, setDays] = useState(7);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const saveSettings = async () => {
@@ -13,15 +10,11 @@ function Settings() {
     try {
       await api.put('/users/settings', { notificationDays: days });
       alert("Impostazioni salvate con successo!");
-    } catch (err) { alert("Errore nel salvataggio."); }
-    finally { setLoading(false); }
-  };
-
-  const updateProfile = async () => {
-    try {
-      await api.put('/users/update-profile', { email, password, newPassword });
-      alert("Credenziali aggiornate!");
-    } catch (err) { alert(err.response?.data?.error || "Errore"); }
+    } catch (err) { 
+      alert(err.response?.data?.msg || "Errore nel salvataggio."); 
+    } finally { 
+      setLoading(false); 
+    }
   };
 
   return (
@@ -35,16 +28,6 @@ function Settings() {
           <label>Giorni di anticipo:</label>
           <input type="number" value={days} onChange={(e) => setDays(e.target.value)} />
           <button onClick={saveSettings} className="btn-primary" disabled={loading}>Salva Preferenze</button>
-        </div>
-      </div>
-
-      <div className="settings-card">
-        <h3>Modifica Credenziali</h3>
-        <div className="form-group">
-          <input placeholder="Nuova Email" onChange={(e) => setEmail(e.target.value)} />
-          <input type="password" placeholder="Password Attuale" onChange={(e) => setPassword(e.target.value)} />
-          <input type="password" placeholder="Nuova Password" onChange={(e) => setNewPassword(e.target.value)} />
-          <button onClick={updateProfile} className="btn-primary">Salva Credenziali</button>
         </div>
       </div>
     </div>
