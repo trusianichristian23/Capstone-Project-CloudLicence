@@ -7,10 +7,12 @@ import './Login.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await api.post('/auth/login', { email, password });
       
@@ -22,6 +24,8 @@ function Login() {
       window.location.reload();
     } catch (error) {
       alert("Credenziali non valide");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,7 +43,9 @@ function Login() {
         <input type="email" placeholder="Email aziendale" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         
-        <button type="submit">Accedi</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Accesso in corso...' : 'Accedi'}
+        </button>
         <button type="button" className="link-button" onClick={() => navigate('/register')}>
           Non hai un account? Registrati
         </button>
