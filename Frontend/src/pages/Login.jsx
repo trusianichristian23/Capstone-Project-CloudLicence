@@ -52,6 +52,9 @@ function Login() {
         <button type="button" className="link-button" onClick={() => navigate('/support')}>
           Hai dimenticato la password?
         </button>
+        <button type="button" className="link-button" onClick={() => navigate('/')}>
+          ← Torna alla Home
+        </button>
       </form>
     </div>
   );
