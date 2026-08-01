@@ -6,10 +6,12 @@ function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       // Inviamo anche il campo 'name' al backend
       await api.post('/auth/register', { name, email, password });
@@ -18,6 +20,8 @@ function Register() {
     } catch (error) {
       console.error("Errore durante la registrazione:", error);
       alert("Errore durante la registrazione. Riprova.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,7 +54,9 @@ function Register() {
           required 
         />
         
-        <button type="submit">Crea account</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Creazione in corso...' : 'Crea account'}
+        </button>
         
         <button type="button" className="link-button" onClick={() => navigate('/login')}>
           Hai già un account? Accedi
